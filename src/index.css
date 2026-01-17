@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Share+Tech+Mono&display=swap');
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  
+  /* Exact gradient from your style.css */
+  background-image: linear-gradient(to right, #000428, #004e92) !important;
+  background-attachment: fixed;
+  background-color: #000428 !important;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* Scrollbar to match Chatify */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #083280;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 114, 255, 0.3);
+  border-radius: 12px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-blue);
+}

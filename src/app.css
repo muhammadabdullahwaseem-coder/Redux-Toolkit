@@ -1,0 +1,228 @@
+/* --- APP CONTAINER --- */
+/* Matches .project-card-view properties */
+.app-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 50px 20px;
+  padding: 3rem 2rem;
+  text-align: center;
+  z-index: 1;
+  
+  /* 1. Transparent/Glass Background */
+  /* We use a slightly darker glass than the card to ensure inputs are readable */
+  background-color: rgba(10, 25, 47, 0.7); 
+  backdrop-filter: blur(5px);
+  
+  /* 2. Text Color */
+  color: #00e1ff; 
+  
+  /* Remove default border/shadows so the pseudo-element takes over */
+  border: none;
+  box-shadow: none;
+  border-radius: 10px;
+  
+  /* Prevent overflow from cutting off the fuzz */
+  overflow: visible;
+}
+
+/* --- THE ELECTRIC BORDER (The ::before element) --- */
+/* Matches .project-card-view::before exactly */
+.app-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  
+  /* 1. The Border */
+  border: 2px solid #00e1ff;
+  
+  /* 2. Lighter Background Layer */
+  background: rgba(0, 0, 0, 0.2);
+  
+  /* 3. The Filter */
+  filter: url(#blue-electric-filter);
+  
+  /* 4. The Glow */
+  box-shadow: 
+    0 0 10px #00e1ff, 
+    0 0 20px #00e1ff, 
+    inset 0 0 10px #00e1ff;
+    
+  border-radius: 10px;
+  
+  /* Optimization: Prevents hover triggering re-paints */
+  pointer-events: none;
+}
+
+/* --- HEADER --- */
+.header h1 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 10px #00e1ff; /* Added neon text glow */
+  margin-bottom: 2rem;
+}
+
+/* --- INPUT SECTION --- */
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  height: 50px;
+}
+
+.task-input input {
+  flex: 1;
+  /* Dark Glass Background for input */
+  background: rgba(10, 25, 47, 0.6); 
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 225, 255, 0.3);
+  padding: 0 15px;
+  border-radius: 8px;
+  color: white;
+  outline: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.task-input input:focus {
+  border-color: #00e1ff;
+  box-shadow: 0 0 8px rgba(0, 225, 255, 0.3);
+}
+
+.task-input button {
+  background: rgba(0, 225, 255, 0.1);
+  border: 1px solid #00e1ff;
+  color: #00e1ff;
+  padding: 0 25px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-family: 'Orbitron', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.task-input button:hover {
+  background: #00e1ff;
+  color: #000428;
+  box-shadow: 0 0 15px #00e1ff;
+}
+
+/* --- TASK LIST ITEMS --- */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  /* Matching the glass theme */
+  background: rgba(10, 25, 47, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 225, 255, 0.1);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Share Tech Mono', monospace;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.task-list li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 225, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- ACTION BUTTONS (Edit/Delete) --- */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Delete Button - Red Glow */
+.delete-btn {
+  background: rgba(255, 50, 50, 0.1);
+  border: 1px solid rgba(255, 50, 50, 0.5);
+  color: #ff4d4d;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.delete-btn:hover {
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 0 10px #ff4d4d;
+  transform: rotate(90deg);
+}
+
+/* Edit Button - Gold Glow */
+.edit-btn {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  color: #ffd700;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.edit-btn:hover {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 0 10px #ffd700;
+}
+
+/* Edit Mode Inputs */
+.edit-mode-group {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.edit-mode-group input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #ffd700;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  outline: none;
+}
+
+.save-btn {
+  background: rgba(0, 255, 0, 0.15);
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #00ff00;
+  color: #000;
+  box-shadow: 0 0 10px #00ff00;
+}
