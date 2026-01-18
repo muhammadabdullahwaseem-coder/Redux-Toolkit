@@ -1,2 +1,5 @@
-"# Redux-Toolkit" 
-live preview reduxtoolkitbymrab.netlify.app
+"# Redux-Toolkit"
+
+
+live preview:-
+        [https//reduxtoolkitbymrab.netlify.app](https://reduxtoolkitbymrab.netlify.app/)
